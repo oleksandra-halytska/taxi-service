@@ -1,0 +1,57 @@
+.btn.btn-primary {
+    margin-bottom: 7px;
+}
+body {
+    margin: 0;
+}
+.container-fluid {
+    padding: 0;
+}
+.link:hover {
+    filter: brightness(70%);
+    text-decoration: floralwhite solid;
+}
+
+.content {
+    margin-left: 5vw;
+    margin-top: 1.5vh;
+    margin-right: 5vw;
+
+}
+
+.pagination {
+    margin-left: 47%;
+}
+.block1 {
+    margin-top: 5vh;
+    float:left;
+    height: 40vh;
+}
+.image-center {
+    text-align: center;
+
+}
+.block2 {
+    margin-top: 12vh;
+    float:right;
+    width: 50vw;
+    height: 36vh;
+
+}
+.block3 {
+    float:left;
+    width: 40vw;
+}
+.greeting {
+    width: 45vw;
+    float: right;
+    background-color: black;
+    color: white;
+    padding-left: 5px;
+    font-size: 22px;
+}
+.image-center {
+    display: block;
+    margin: auto;
+}
+

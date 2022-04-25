@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    <div class="block block1">
+        <h1 style="background-color: gold">TAXI SERVICE HOME</h1>
+    </div>
+    <div class="block block2">
+        <p><img src="{% static "images/taxi1.png" %}" alt="" class="image-center">
+    </div>
+    <div class="block block3">
+        <h1>DYNAMIC CONTENT</h1>
+        <p>THE TAXI SERVICE HAS THE FOLLOWING RECORD COUNTS:</p>
+        <ul style="list-style-type: square">
+            <li><strong>CARS:</strong> {{ num_cars }}</li>
+            <li><strong>DRIVERS:</strong> {{ num_drivers }}</li>
+            <li><strong>MANUFACTURERS:</strong> {{ num_manufacturers }}</li>
+        </ul>
+        <p>YOU HAVE VISITED THIS PAGE
+            {{ num_visits }} time{{ num_visits|pluralize }}.
+        </p>
+    </div>
+    <div class="block block4">
+        <div class="greeting">WELCOME TO THE BEST TAXI SERVICE!</div>
+    </div>
+
+{% endblock %}
