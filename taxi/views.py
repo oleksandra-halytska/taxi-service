@@ -21,7 +21,6 @@ AWARD_MIDDLE = 1.3
 AWARD_MAX = 1.45
 
 
-@login_required
 def index(request):
     """View function for the home page of the site."""
 
