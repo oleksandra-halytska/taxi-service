@@ -34,7 +34,7 @@ DEBUG = os.environ.get("DJANGO_DEBUG", "") != "False"
 
 ALLOWED_HOSTS = [
     "127.0.0.1",
-    "taxi-service-web-application.herokuapp.com"
+    "taxi-service-app-halytska.herokuapp.com/"
 ]
 
 INTERNAL_IPS = [
