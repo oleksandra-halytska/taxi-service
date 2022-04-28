@@ -8,8 +8,17 @@ from django.views import generic
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import Count, Sum
 
-from .forms import DriverCreationForm, DriverUpdateForm, CarCreateForm
-from .models import Driver, Car, Manufacturer
+from .forms import (
+    DriverCreationForm,
+    DriverUpdateForm,
+    CarCreateForm,
+    ManufacturerSearchForm
+)
+from .models import (
+    Driver,
+    Car,
+    Manufacturer
+)
 
 PAGINATED_BY = 3
 DAYS = 30
@@ -43,7 +52,31 @@ def index(request):
 
 class ManufacturerListView(LoginRequiredMixin, generic.ListView):
     model = Manufacturer
+    queryset = Manufacturer.objects.all()
     paginate_by = PAGINATED_BY
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super(ManufacturerListView, self).get_context_data(**kwargs)
+
+        name = self.request.GET.get("name", "")
+
+        context["search_form"] = ManufacturerSearchForm(
+            initial={
+                "name": name
+            }
+        )
+
+        return context
+
+    def get_queryset(self):
+        form = ManufacturerSearchForm(self.request.GET)
+
+        if form.is_valid():
+            return self.queryset.filter(
+                name__icontains=form.cleaned_data["name"]
+            )
+
+        return self.queryset
 
 
 class CarListView(LoginRequiredMixin, generic.ListView):
@@ -117,18 +150,6 @@ class DriverUpdateView(LoginRequiredMixin, generic.UpdateView):
     form_class = DriverUpdateForm
     template_name = "taxi/driver_license_update.html"
     success_url = reverse_lazy("taxi:car-list")
-
-
-class Search(generic.ListView):
-    paginate_by = 3
-
-    def get_queryset(self):
-        return Manufacturer.objects.filter(name__icontains=self.request.GET.get("q"))
-
-    def get_context_data(self, *args, **kwargs):
-        context = super().get_context_data(*args, **kwargs)
-        context["q"] = self.request.GET.get("q")
-        return context
 
 
 def get_salary(request, pk):
