@@ -1,11 +1,6 @@
-from playwright.sync_api import Page
-from .locators.locators import Locators
+from .base_page import BasePage
+from ..constants.constants import Constants
 
 
-class DriversPage:
-    def __init__(self, page: Page) -> None:
-        self.page = page
-        self.link = self.page.get_by_role(Locators.LINK, name="All drivers")
-
-    def click_on_link(self) -> None:
-        self.link.click()
+class DriversPage(BasePage):
+    PAGE_NAME = Constants.DRIVERS_PAGE
