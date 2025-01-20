@@ -3,8 +3,6 @@ FROM python:3.11
 
 WORKDIR /app
 
-COPY . .
-
 # Install any OS packages needed to run Chromium
 RUN apt-get update && apt-get install -y \
     libnss3 \
@@ -16,10 +14,17 @@ RUN apt-get update && apt-get install -y \
     gnupg \
     && rm -rf /var/lib/apt/lists/*
 
-RUN pip install --no-cache-dir --upgrade pip
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install playwright
 RUN playwright install
 RUN playwright install --with-deps
+
+COPY requirements.txt requirements.txt
+
+RUN pip install --no-cache-dir --upgrade pip
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY . .
+
 
 
 EXPOSE 8000

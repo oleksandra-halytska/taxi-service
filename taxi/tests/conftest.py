@@ -10,9 +10,25 @@ pytest_plugins = [
 ]
 
 
+@pytest.fixture
+def anyio_backend():
+
+    return 'asyncio'
+
+
+@pytest.fixture
+def pytest_bdd_apply_tag(tag, function):
+    if tag == "django_db":
+        marker = pytest.mark.django_db(transaction=True)
+        marker(function)
+        return True
+    else:
+        return None
+
+
 @pytest.fixture(scope="module")
 def setup_browser(playwright: Playwright) -> Page:
-    browser = playwright.chromium.launch(headless=False)
+    browser = playwright.chromium.launch(headless=True)
     print("Launching browser page...")
     context = browser.new_context()
     page = context.new_page()

@@ -1,4 +1,4 @@
 from pytest_bdd import scenarios
 
 
-scenarios("./manufacturer_creation_verification.feature")
+scenarios("./logged_out_user_access_verification.feature")

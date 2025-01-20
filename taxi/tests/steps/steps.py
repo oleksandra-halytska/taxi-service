@@ -30,4 +30,31 @@ def is_text_available(
     page_object = make_page_fixture(page_name)
 
     assert page_object.is_element_exist(text, role), \
-        f"'{text}' text with {role} role is not available on the {page_name} page."
+        (f"'{text}' text with {role} role is not available"
+         f" on the {page_name} page.")
+
+
+@when(parsers.parse("click on '{link_name}' link on '{page_name}' page"))
+def click_on_the_button(
+        link_name: str, page_name: str, make_page_fixture: callable
+):
+    page_object = make_page_fixture(page_name)
+    page_object.click_on_link_with_name(link_name)
+
+
+@when(parsers.parse("click on '{button_name}' button on '{page_name}' page"))
+def click_on_the_button(
+        button_name: str, page_name: str, make_page_fixture: callable
+):
+    page_object = make_page_fixture(page_name)
+    page_object.click_on_button_with_name(button_name)
+
+
+@when(parsers.parse(
+    "fill the '{field_name}' field with '{text}' text on '{page_name}' page"
+))
+def fill_the_field_with_text(
+        field_name: str, text: str, page_name: str, make_page_fixture: callable
+):
+    page_object = make_page_fixture(page_name)
+    page_object.fill_the_field_with_text(field_name, text)
