@@ -34,3 +34,4 @@ class BasePage:
     def click_on_button_with_name(self, name: str) -> None:
         button = self.page.get_by_role("button", name=name)
         button.click()
+

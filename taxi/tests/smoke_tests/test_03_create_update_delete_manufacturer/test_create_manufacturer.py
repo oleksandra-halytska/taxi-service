@@ -1,13 +1,9 @@
-import pytest
-from pytest_bdd import scenarios
-from pytest_bdd import when, then, parsers, scenario
+from pytest_bdd import scenario
 
 
-# @pytest.mark.django_db(transaction=True)
-# def main():
-#     scenarios("./manufacturer_crud_operations_verification.feature")
-
-@pytest.mark.django_db(transaction=True)
-@scenario('manufacturer_crud_operations_verification.feature', 'Launch taxi service')
-def test_launch_taxi_service():
+@scenario(
+    'manufacturer_crud_operations_verification.feature',
+    'Verify that CRUD operations work for Manufacturer object'
+)
+def test_manufacturer_crud(setup_browser):
     pass

@@ -6,11 +6,11 @@ Feature: Verify that authorized users have access to the restricted pages
     When the user submits the form
     Then the user should be redirected to the home page
 
-  Scenario: Verify that all the services are available for logged in user
-    When open '<page_name>' page
-    Then '<expected_text>' h1 is available on '<page_name>' page
-    Examples:
-      | page_name         | expected_text     |
-      | All cars          | Car List          |
-      | All drivers       | Driver List       |
-      | All manufacturers | Manufacturer List |
+    When open 'All cars' page
+    Then 'Car List' h1 is available on 'All cars' page
+
+    When open 'All drivers' page
+    Then 'Driver List' h1 is available on 'All drivers' page
+
+    When open 'All manufacturers' page
+    Then 'Manufacturer List' h1 is available on 'All manufacturers' page

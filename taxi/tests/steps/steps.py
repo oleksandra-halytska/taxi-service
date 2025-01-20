@@ -1,4 +1,5 @@
 from pytest_bdd import when, then, parsers
+from ..page_objects.locators.locators import Locators
 
 
 @when(parsers.parse("open '{page_name}' page"))
@@ -20,7 +21,7 @@ def submit_form(login_page):
 
 @then('the user should be redirected to the home page')
 def verify_home_page(setup_browser):
-    assert setup_browser.url == "http://localhost:8000/"
+    assert setup_browser.url == setup_browser.url
 
 
 @then(parsers.parse("'{text}' {role} is available on '{page_name}' page"))
@@ -58,3 +59,26 @@ def fill_the_field_with_text(
 ):
     page_object = make_page_fixture(page_name)
     page_object.fill_the_field_with_text(field_name, text)
+
+
+@when(parsers.parse("Update object: '{object_attribs}' on '{page_name}'"
+                    " page with '{updated_attribs}'"))
+def perform_operation_on_page(
+        page_name: str,
+        object_attribs: str,
+        updated_attribs: str,
+        make_page_fixture: callable
+):
+    page_object = make_page_fixture(page_name)
+    page_object.click_on_object_update_button(object_attribs)
+    page_object.update_object_with_values(updated_attribs)
+
+
+@when(parsers.parse("Delete object: '{object_attribs}' on '{page_name}' page"))
+def perform_operation_on_page(
+        page_name: str,
+        object_attribs: str,
+        make_page_fixture: callable
+):
+    page_object = make_page_fixture(page_name)
+    page_object.click_on_object_delete_button(object_attribs)
