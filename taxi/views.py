@@ -149,7 +149,7 @@ class DriverUpdateView(LoginRequiredMixin, generic.UpdateView):
     model = Driver
     form_class = DriverUpdateForm
     template_name = "taxi/driver_license_update.html"
-    success_url = reverse_lazy("taxi:car-list")
+    success_url = reverse_lazy("taxi:driver-list")
 
 
 def get_salary(request, pk):
