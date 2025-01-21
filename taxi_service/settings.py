@@ -29,7 +29,7 @@ SECRET_KEY = ["DJANGO_SECRET_KEY"]
 # SECURITY WARNING: don"t run with debug turned on in production!
 
 # SECURITY WARNING: don"t run with debug turned on in production!
-DEBUG = os.environ.get("DJANGO_DEBUG", "") != "False"
+# DEBUG = os.environ.get("DJANGO_DEBUG", "") != "False"
 
 
 ALLOWED_HOSTS = [
@@ -51,7 +51,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    # "debug_toolbar",
+    "debug_toolbar",
     "taxi",
     "crispy_forms",
 ]
@@ -61,7 +61,7 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
-    # "debug_toolbar.middleware.DebugToolbarMiddleware",
+    "debug_toolbar.middleware.DebugToolbarMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -79,7 +79,7 @@ TEMPLATES = [
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
-                # "django.template.context_processors.debug",
+                "django.template.context_processors.debug",
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
