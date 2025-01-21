@@ -63,7 +63,7 @@ def fill_the_field_with_text(
 
 @when(parsers.parse("Update object: '{object_attribs}' on '{page_name}'"
                     " page with '{updated_attribs}'"))
-def perform_operation_on_page(
+def update_object(
         page_name: str,
         object_attribs: str,
         updated_attribs: str,
@@ -75,10 +75,36 @@ def perform_operation_on_page(
 
 
 @when(parsers.parse("Delete object: '{object_attribs}' on '{page_name}' page"))
-def perform_operation_on_page(
+def delete_object(
         page_name: str,
         object_attribs: str,
         make_page_fixture: callable
 ):
     page_object = make_page_fixture(page_name)
     page_object.click_on_object_delete_button(object_attribs)
+
+
+@when(
+    parsers.parse(
+        "Select '{option_name}' option from '{options_label}'"
+        " options on '{page_name}' page"
+        )
+)
+def select_option(
+        option_name: str,
+        options_label: str,
+        page_name: str,
+        make_page_fixture: callable
+):
+    page_object = make_page_fixture(page_name)
+    page_object.select_dropdown_option(options_label, option_name)
+
+
+@when(parsers.parse("Check '{object_name}' object on '{page_name}' page"))
+def check_object(
+        object_name: str,
+        page_name: str,
+        make_page_fixture: callable
+):
+    page_object = make_page_fixture(page_name)
+    page_object.check_checkbox(object_name)

@@ -3,8 +3,14 @@ import pytest
 
 from playwright.sync_api import Playwright, Page
 from django.contrib.auth import get_user_model
+from taxi.models import Manufacturer, Trip
 from taxi.tests.constants.constants import Constants
-from taxi.tests.page_objects import LoginPage, CarsPage, ManufacturersPage, DriversPage
+from taxi.tests.page_objects import (
+    LoginPage,
+    CarsPage,
+    ManufacturersPage,
+    DriversPage
+)
 
 
 pytest_plugins = [
@@ -15,21 +21,9 @@ os.environ["DJANGO_ALLOW_ASYNC_UNSAFE"] = "true"
 
 
 # @pytest.fixture
-# def admin_client(base_url, admin_credentials):
-#     return AdminApiClient(base_url, **admin_credentials)
+# def anyio_backend():
 #
-#
-# @pytest.fixture
-# def user(admin_client):
-#     _user = User(name="Susan", username=f"testuser-{uuid4()}", password="P4$$word")
-#     admin_client.create_user(_user)
-#     yield _user
-#     admin_client.delete_user(_user)
-
-@pytest.fixture
-def anyio_backend():
-
-    return 'asyncio'
+#     return 'asyncio'
 
 
 @pytest.fixture
@@ -55,6 +49,24 @@ def create_superuser() -> None:
             username="test",
             email="test@gmail.com",
             password="123456"
+    )
+
+
+@pytest.mark.django_db
+@pytest.fixture
+def create_manufacturer() -> None:
+    Manufacturer.objects.create(
+        name="test_manufacturer",
+        country="country"
+    )
+
+
+@pytest.mark.django_db
+@pytest.fixture
+def create_trip() -> None:
+    Trip.objects.create(
+        name="test_manufacturer",
+        country="country"
     )
 
 

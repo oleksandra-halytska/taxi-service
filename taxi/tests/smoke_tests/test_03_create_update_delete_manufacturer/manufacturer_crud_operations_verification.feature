@@ -20,3 +20,4 @@ Feature: Verify that CRUD operations work for Manufacturer object
     Then 'Delete manufacturer' h1 is available on 'All manufacturers' page
     Then 'Are you sure, that you want' p is available on 'All manufacturers' page
     When click on 'delete' button on 'All manufacturers' page
+    Then 'There are no manufacturers in the service.' p is available on 'All manufacturers' page
