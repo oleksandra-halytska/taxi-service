@@ -21,6 +21,8 @@ services:
 
   db:
     image: postgres:15
+    env_file:
+      - .env
 #    environment:
 #      POSTGRES_DB: taxi_db
 #      POSTGRES_USER: user
