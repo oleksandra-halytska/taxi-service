@@ -34,7 +34,8 @@ SECRET_KEY = os.getenv("DJANGO_SECRET_KEY")
 ALLOWED_HOSTS = [
     "localhost",
     "127.0.0.1",
-    "0.0.0.0"
+    "0.0.0.0",
+    "3.120.51.40"
 ]
 
 INTERNAL_IPS = [
