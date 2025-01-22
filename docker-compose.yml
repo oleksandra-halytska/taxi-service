@@ -13,6 +13,8 @@ services:
              gunicorn -w 2 taxi_service.wsgi:application --bind 0.0.0.0:8000"
     depends_on:
       - db
+    networks:
+      - backend
     volumes:
       - .:/app
       - static_volume:/app/staticfiles
@@ -21,6 +23,8 @@ services:
     image: postgres:15
     env_file:
       - .env
+    networks:
+      - backend
 #    environment:
 #      POSTGRES_DB: taxi_db
 #      POSTGRES_USER: user
@@ -39,3 +43,6 @@ services:
 
 volumes:
   static_volume:
+networks:
+  backend:
+     driver: bridge
