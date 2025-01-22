@@ -11,7 +11,7 @@ services:
     command: >
       sh -c "python3 manage.py collectstatic --noinput --clear &&
              python manage.py migrate &&
-             python manage.py create_test_superuser --no_input &&
+             python manage.py create_test_superuser --username=test --email=test@gmail.com --password=123456 &&
              gunicorn -w 2 taxi_service.wsgi:application --bind 0.0.0.0:8000"
     depends_on:
       db:
