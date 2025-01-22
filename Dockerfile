@@ -30,5 +30,3 @@ EXPOSE 8000
 RUN mkdir -p /staticfiles
 
 RUN python3 manage.py collectstatic --noinput --clear
-
-#CMD ["sh", "-c", "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"]

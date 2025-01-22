@@ -11,6 +11,7 @@ services:
     command: >
       sh -c "python3 manage.py collectstatic --noinput --clear &&
              python manage.py migrate &&
+             python manage.py create_test_superuser &&
              gunicorn -w 2 taxi_service.wsgi:application --bind 0.0.0.0:8000"
     depends_on:
       - db
@@ -26,21 +27,6 @@ services:
       - .env
     networks:
       - backend
-#    environment:
-#      POSTGRES_DB: taxi_db
-#      POSTGRES_USER: user
-#      POSTGRES_PASSWORD: password
-#  nginx:
-#    build: ./nginx
-#    ports:
-#      - 80:80
-#      - 443:443
-#    depends_on:
-#      - web
-#    volumes:
-#      - static_volume:/home/app/web/staticfiles
-#      - ./certbot/conf:/etc/letsencrypt
-#      - ./certbot/www:/var/www/certbot
 
 volumes:
   static_volume:
