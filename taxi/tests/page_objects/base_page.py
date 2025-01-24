@@ -1,4 +1,4 @@
-from playwright.async_api import Page, expect
+from playwright.sync_api import Page
 from .locators.locators import Locators
 from typing import Any
 
