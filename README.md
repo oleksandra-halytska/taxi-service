@@ -30,6 +30,6 @@ python manage.py runserver
 
 ![Website Interface](site.png)
 
-* to check project:
+## To check project use next credentials:
 * login: test
 * password: 123456
