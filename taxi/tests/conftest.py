@@ -20,6 +20,19 @@ pytest_plugins = [
 os.environ["DJANGO_ALLOW_ASYNC_UNSAFE"] = "true"
 
 
+# @pytest.fixture
+# def setup_browser(live_server, playwright: Playwright) -> Page:
+#     browser = playwright.chromium.launch()
+#     context = browser.new_context()
+#     page = context.new_page()
+#     page.goto(live_server.url)
+#     try:
+#         yield page
+#     finally:
+#         context.close()
+#         browser.close()
+
+
 @pytest.fixture
 def setup_browser(live_server, playwright: Playwright) -> Page:
     browser = playwright.chromium.launch()

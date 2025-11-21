@@ -5,7 +5,6 @@ from taxi.models import Manufacturer, Car
 
 
 class ModelsTests(TestCase):
-
     def test_manufacturer_str(self):
         manufacturer = Manufacturer.objects.create(
             name="name",
@@ -23,24 +22,15 @@ class ModelsTests(TestCase):
             password="password"
         )
 
-        self.assertEqual(
-            str(driver),
-            f"{driver.username}"
-        )
+        self.assertEqual(str(driver),f"{driver.username}")
 
     def test_car_str(self):
         manufacturer = Manufacturer.objects.create(
             name="name",
             country="country"
         )
-        car = Car.objects.create(
-            model="model",
-            manufacturer=manufacturer
-        )
-        self.assertEqual(
-            str(car),
-            f"{car.model}"
-        )
+        car = Car.objects.create(model="model", manufacturer=manufacturer)
+        self.assertEqual(str(car), f"{car.model}")
 
     def test_create_driver_with_license_number(self):
         username = "username"
