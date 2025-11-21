@@ -13,10 +13,7 @@ from taxi.tests.page_objects import (
 )
 
 
-pytest_plugins = [
-    "taxi.tests.steps.steps"
-]
-
+pytest_plugins = ["taxi.tests.steps.steps"]
 os.environ["DJANGO_ALLOW_ASYNC_UNSAFE"] = "true"
 
 
