@@ -1,5 +1,4 @@
-FROM python:3.11
-
+FROM python:3.11-bookworm
 
 WORKDIR /app
 
@@ -11,16 +10,15 @@ RUN apt-get update && apt-get install -y \
     libgtk-3-0 \
     wget \
     gnupg \
+    tzdata \
     && rm -rf /var/lib/apt/lists/*
 
-RUN pip install playwright
-RUN playwright install
-RUN playwright install --with-deps
-
 COPY requirements.txt requirements.txt
-
 RUN pip install --no-cache-dir --upgrade pip
 RUN pip install --no-cache-dir -r requirements.txt
+
+RUN playwright install chromium
+RUN playwright install-deps
 
 COPY . .
 

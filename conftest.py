@@ -6,28 +6,12 @@ from django.contrib.auth import get_user_model
 from taxi.models import Manufacturer, Trip
 from taxi.tests.constants.constants import Constants
 from taxi.tests.page_objects import (
-    LoginPage,
-    CarsPage,
-    ManufacturersPage,
-    DriversPage
+    LoginPage, CarsPage, ManufacturersPage, DriversPage
 )
 
 
 pytest_plugins = ["taxi.tests.steps.steps"]
 os.environ["DJANGO_ALLOW_ASYNC_UNSAFE"] = "true"
-
-
-# @pytest.fixture
-# def setup_browser(live_server, playwright: Playwright) -> Page:
-#     browser = playwright.chromium.launch()
-#     context = browser.new_context()
-#     page = context.new_page()
-#     page.goto(live_server.url)
-#     try:
-#         yield page
-#     finally:
-#         context.close()
-#         browser.close()
 
 
 @pytest.fixture
@@ -50,18 +34,15 @@ def create_superuser() -> None:
 
     if not User.objects.filter(username="test").exists():
         User.objects.create_superuser(
-            username="test",
-            email="test@gmail.com",
-            password="123456"
-    )
+            username="test", email="test@gmail.com", password="123456"
+        )
 
 
 @pytest.mark.django_db
 @pytest.fixture
 def create_manufacturer() -> None:
     Manufacturer.objects.create(
-        name="test_manufacturer",
-        country="country"
+        name="test_manufacturer", country="country"
     )
 
 
@@ -69,8 +50,7 @@ def create_manufacturer() -> None:
 @pytest.fixture
 def create_trip() -> None:
     Trip.objects.create(
-        name="test_manufacturer",
-        country="country"
+        name="test_manufacturer", country="country"
     )
 
 
