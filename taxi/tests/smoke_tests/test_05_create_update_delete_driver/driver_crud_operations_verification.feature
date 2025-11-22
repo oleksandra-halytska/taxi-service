@@ -1,5 +1,6 @@
 Feature: Verify that CRUD operations work for Driver object
 
+  @smoke
   Scenario: Verify that CRUD operations work for Driver object
     When open 'login' page
     When the user enters valid credentials

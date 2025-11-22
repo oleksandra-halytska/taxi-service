@@ -1,5 +1,6 @@
 Feature: Verify that authorized users have access to the restricted pages
 
+  @smoke
   Scenario: Log in to Taxi Service web site and verify that logging process was successful
     When open 'login' page
     When the user enters valid credentials

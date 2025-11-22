@@ -1,5 +1,6 @@
 Feature: Verify that CRUD operations work for Car object
 
+  @smoke
   Scenario: Verify that CRUD operations work for Car object
     When open 'login' page
     When the user enters valid credentials

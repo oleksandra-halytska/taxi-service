@@ -1,5 +1,6 @@
 Feature: Verify that unauthorized users cannot access restricted pages
 
+  @smoke
   Scenario: Launch taxi service
     When open 'login' page
     Then 'Please login to see this page' p is available on 'login' page

@@ -2,8 +2,8 @@ class Locators:
     LINK = "link"
     BUTTON = "button"
 
-    USERNAME_LABEL = "Username:"
-    PASSWORD_LABEL = "Password:"
+    USERNAME_LABEL = "Username"
+    PASSWORD_LABEL = "Password"
     NAME_LABEL = "Name*"
     LICENSE_LABEL = "License number*"
     MODEL_LABEL = "Model*"
