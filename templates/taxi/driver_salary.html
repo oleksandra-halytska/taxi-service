@@ -1,7 +1,11 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
-    <img src="{% static "images/coin.png" %}" alt="">
-    <h1>Now {{ driver }}'s salary is {{ salary|floatformat }} uah</h1>
-    <a href="{% url "taxi:driver-list" %}" class="btn btn-primary">< Back</a>
+    <div class="container text-center mt-5">
+        <img src="{% static "images/coin.png" %}" alt="Coin" class="img-fluid mb-4" style="max-height: 150px;">
+        <h1 class="mb-4">Now {{ driver }}'s salary is <span class="text-success">{{ salary|floatformat }} uah</span></h1>
+        <a href="{% url "taxi:driver-list" %}" class="btn btn-primary btn-lg">
+            &laquo; Back
+        </a>
+    </div>
 {% endblock %}

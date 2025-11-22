@@ -13,20 +13,28 @@
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 
-<body>
-<div class="container-fluid">
-            <div style="width: 100%; height: 20%">
-            {% block sidebar %}
-                {% include "includes/sidebar.html" %}
-            {% endblock %}
+<body style="margin: 0; padding: 0;">
+    <div class="container-fluid p-0" style="background-color: black;">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark top-menu" style="border-radius: 0; width: 100%;">
+            <div class="w-100 d-flex justify-content-between align-items-center text-white px-3">
+                {% block sidebar %}
+                    {% include "includes/sidebar.html" %}
+                {% endblock %}
             </div>
-            <div class="content">
+        </nav>
+    </div>
+
+    <div class="container mt-4">
+        <div class="content">
             {% block content %}{% endblock %}
-            </div>
+        </div>
+
+        <div class="mt-4">
             {% block pagination %}
                 {% include "includes/pagination.html" %}
             {% endblock %}
+        </div>
+    </div>
 
-</div>
 </body>
 </html>
